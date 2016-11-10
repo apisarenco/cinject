@@ -1,3 +1,5 @@
+using System;
+
 namespace Cinject {
 	public interface IKernel {
 		void RegisterModule(BaseModule module);
