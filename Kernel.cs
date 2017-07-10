@@ -1,7 +1,13 @@
 using System;
+using System.Collections.Generic;
 
 namespace Cinject {
 	public class Kernel : IKernel {
+		private List<BaseModule> _modules;
+		public Kernel() {
+			_modules = new List<BaseModule>();
+		}
+
 		public void RegisterModule(BaseModule module) {
 			
 		}
