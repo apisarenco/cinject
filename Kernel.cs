@@ -8,7 +8,7 @@ namespace Cinject {
 			_modules = new List<BaseModule>();
 		}
 
-		public void RegisterModule(BaseModule module) {
+		public void RegisterModule(BaseModule module, int priority = 0) {
 			
 		}
 

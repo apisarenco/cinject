@@ -6,14 +6,13 @@ using Cinject.Mapping.Generic;
 namespace Cinject {
 	public abstract class BaseModule {
 		private List<Mapper> _mappers;
-		private List<Resolver> _resolvers;
 
 		public BaseModule() {
 			_mappers = new List<Mapper>();
 		}
 
 		protected Mapper<T> Map<T>() {
-			var mapper = new Mapper<T>(x=>this._resolvers.Add(x));
+			var mapper = new Mapper<T>();
 			_mappers.Add(mapper);
 			return mapper;
 		}

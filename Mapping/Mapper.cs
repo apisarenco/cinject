@@ -2,11 +2,10 @@ using System;
 
 namespace Cinject.Mapping {
 	public class Mapper {
-		protected Type _tFrom;
-		protected Mapped _mapsTo;
+		protected internal Type _tFrom;
+		protected internal Mapped _mapsTo;
 
-		public Mapper(Func<Resolver, Resolver> resolverSetter) {
-			resolverSetter(new Resolver());
+		public Mapper() {
 		}
 
 		public Mapper(Type tObject) {
@@ -17,5 +16,9 @@ namespace Cinject.Mapping {
 			_mapsTo = new Mapped(tObject);
 			return _mapsTo;
 		}
+
+		internal Type TFrom {get { return this._tFrom; }}
+
+		internal Mapped MappedInfo {get { return this._mapsTo; }}
 	}
 }
