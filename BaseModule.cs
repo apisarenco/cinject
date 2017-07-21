@@ -11,8 +11,8 @@ namespace Cinject {
 			_mappers = new List<Mapper>();
 		}
 
-		protected Mapper<T> Map<T>() {
-			var mapper = new Mapper<T>();
+		protected Mapper Map<T>() {
+			var mapper = new Mapper(typeof(T));
 			_mappers.Add(mapper);
 			return mapper;
 		}
@@ -21,6 +21,23 @@ namespace Cinject {
 			var mapper = new Mapper(tObject);
 			_mappers.Add(mapper);
 			return mapper;
+		}
+
+		internal Dictionary<Type, List<Tuple<int, Type>>> Rules
+		{
+			get
+			{
+				var result = new Dictionary<Type, List<Tuple<int, Type>>>();
+				foreach(var mapper in _mappers) {
+					var tFrom = mapper.TFrom;
+					if(!result.ContainsKey(tFrom)) {
+						result.Add(tFrom, new List<Tuple<int, Type>>());
+					}
+					var mInfo = mapper.MappedInfo;
+					
+				}
+				return result;
+			}
 		}
 	}
 }

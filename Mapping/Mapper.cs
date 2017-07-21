@@ -1,12 +1,9 @@
 using System;
 
 namespace Cinject.Mapping {
-	public class Mapper {
-		protected internal Type _tFrom;
-		protected internal Mapped _mapsTo;
-
-		public Mapper() {
-		}
+	public sealed class Mapper {
+		private Type _tFrom;
+		private Mapped _mapsTo;
 
 		public Mapper(Type tObject) {
 			_tFrom = tObject;
@@ -14,6 +11,11 @@ namespace Cinject.Mapping {
 
 		public Mapped To(Type tObject) {
 			_mapsTo = new Mapped(tObject);
+			return _mapsTo;
+		}
+
+		public Mapped To<T>() {
+			_mapsTo = new Mapped(typeof(T));
 			return _mapsTo;
 		}
 
